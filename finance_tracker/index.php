@@ -1,20 +1,12 @@
 <?php
-// index.php
-session_start(); // Start the session to access session variables
-
-// Include the database connection (optional for this page, but good practice if you fetch user-specific data)
+session_start(); 
 include "db_connect.php";
 
-// Check if the user is NOT logged in.
-// We assume that a successful login/signup will set $_SESSION['loggedin'] to true
-// and $_SESSION['username'] to the logged-in user's username.
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // If not logged in, redirect to the login page
     header("Location: login.php");
-    exit; // Stop further script execution
+    exit;
 }
-
-$username = $_SESSION['username'] ?? 'Guest'; // Get username from session, default to Guest if not set
+$username = $_SESSION['username'] ?? 'Guest'; 
 ?>
 
 <!DOCTYPE html>
